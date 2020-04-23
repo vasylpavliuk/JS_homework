@@ -1,2 +1,2 @@
 # JS_homework
-javacsript course homeworks
+homework №1 Basic JS
