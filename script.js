@@ -1,148 +1,106 @@
-//TASK1
-let num;
-console.log(typeof num);
-num = 9;
-console.log(typeof num);
-num = "string";
-console.log(typeof num);
-num = true;
-console.log(typeof num);
-num = null;
-console.log(typeof num);
-num = Symbol();
-console.log(typeof num);
-num = new Object();
-console.log(typeof num);
-num = Object;
-console.log(typeof num);
-num = NaN;
-console.log(typeof num);
+// 1.  Знайдіть суму всіх цифр від 1 до 100.
 
-// TASK 2
-let currencyConverter = +prompt(
-  "Введіть кількість гривень, що бажаєте конвертувати?"
-);
-if (
-  currencyConverter !== null &&
-  currencyConverter !== undefined &&
-  currencyConverter !== 0 &&
-  !isNaN(currencyConverter)
-) {
-  console.log(`Ви можете придбати ${currencyConverter / 26} доларів США,
-    або ж ${currencyConverter / 28} євро,
-    або ж ${currencyConverter / 500} барелів нафти марки Brent,
-    або ж ${currencyConverter / 1000} грам золота`);
-} else {
-  console.log(
-    "Введіть будь ласка кількість гривень, що бажаєте конвертувати, числовим значенням"
-  );
+// 2.  Є масив [1, 2, 3, 4, 5]. З допомогою  цикла for вивести всі елементи на екран.
+
+// 3. Є масив [-1, 22, 3, 44, 5]. Виведіть максимальне значення
+
+// 4. Попросити юзера ввести 8 чисел і скільки він ввів додатніх, відємних та нулів. Вивести статистику на екран. Також досмтатньо тільки 1 змінної для отримання даних від юзера.
+
+// 5. Надрукуйте табличку множення для числа  8 від 1 до 9. 8 х 1 = 8
+
+// 6. Є масив з елементами 2, 5, 9, 15, 0, 4. З допомогою цикла for і оператора if вивести на екран цифри, які більше 3-х, але менше 10.
+
+// 7. Створити калькулятор який буде зациклений. Запитати у юзера 2 числа та знак , провести математичну операцію, далі вивести результат і спитатись чи хоче юзер повторити?
+
+//TASK 1
+let sum = 0;
+let i = 0;
+while (i <= 100) {
+  sum += i;
+  i++;
+}
+console.log(sum);
+
+//TASK 2
+let arr = [1, 2, 3, 4, 5];
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
 }
 
-// TASK 3
-let order = +prompt("Введіть суму замовлення");
-let discount = 0.01;
-if (order >= 500 && order < 1000) {
-  discount = 0.05;
+//TASK 3
+let arr1 = [-1, 22, 3, 44, 5];
+console.log(Math.max(...arr1));
+let arr2 = [-1, 22, 3, 44, 5];
+let max = 0;
+for (let i = 0; i < arr2.length; i++) {
+  if (arr2[i] > max) {
+    max = arr2[i];
+  }
 }
-if (order >= 1000) {
-  discount = 0.1;
-}
-let discountSum = order * discount;
-if (order < 1000) {
-  console.log(`Congratulations, you receive ${discountSum} gryvnas discount`);
-} else {
-  console.log(
-    `Congratulations, you receive ${discountSum} discount and a 200 gryvnas gift certificate`
-  );
-}
+console.log(max);
 
 //TASK 4
-alert(
-  "Пройдіть тест про все на світі. Дайте правильні відповіді на усі 5 питань та отримайте 1 бонусний бал!"
+let arrNum = [],
+  arrPlusNum = [],
+  arrMinusNum = [],
+  arrZeros = [];
+let agree = confirm(
+  "Ви бажаєте скористуватися нашим сервісом? Вам потрібно буде ввести 8 чисел."
 );
-let questions = [
-  "Столиця США?",
-  "Найдовша річка у світі?",
-  "5 * 5 = ?",
-  "Найвища точка світу?",
-  "Столиця України?",
-];
-let answers = ["Вашингтон", "Ніл", "25", "Еверест", "Київ"];
-let correctAnswers = 0;
-for (let i = 0; i < 5; i++) {
-  let userAnswers = prompt(questions[i]);
-  if (userAnswers === answers[i]) {
-    correctAnswers++;
+for (let i = 0; i < 8; i++) {
+  if (agree) {
+    let addNumber = +prompt(`Введіть будь яке число. ${i + 1} спроба`);
+    arrNum.push(addNumber);
+    if (addNumber === 0) {
+      arrZeros.push(addNumber);
+    } else if (addNumber > 0) {
+      arrPlusNum.push(addNumber);
+    } else if (addNumber < 0) {
+      arrMinusNum.push(addNumber);
+    }
+  } else break;
+}
+console.log(
+  `Ви ввели такі числа ${arrNum}. Ви ввели ${arrZeros.length} нулів, ${arrPlusNum.length} додатніх та ${arrMinusNum.length} від'ємних значень`
+);
+
+//TASK 5
+for (let i = 1; i <= 9; i++) {
+  console.log(`8 x ${i} = ${8 * i}`);
+}
+
+//TASK 6
+let arr6 = [2, 5, 9, 15, 0, 4];
+for (let i = 0; i < arr6.length; i++) {
+  if (arr6[i] > 3 && arr6[i] < 10) {
+    console.log(arr6[i]);
   }
 }
 
-if (correctAnswers === 5) {
-  alert(
-    "Вітаємо, Ви дали правильні відповіді на усі 5 запитань, тому отримуєте 1 бонусний бал. Загальна кільність балів - 6."
-  );
-} else {
-  alert(`Ви дали правильні відповіді на ${correctAnswers} запитань із 5-ти.`);
-}
-
-//TASK5
-let number = prompt(
-  "Введіть будь яке трьохзначне число та довідайтесь чи у ньому є однакові цифри"
-);
-if (
-  number[0] === number[1] ||
-  number[0] === number[2] ||
-  number[0] === number[2]
-) {
-  console.log("У вказаному Вами числі Є одинакові цифри");
-} else {
-  console.log(
-    "У вказаному Вами числі НЕМАЄ одинакових цифр або ж Ви ввели некоректні дані"
-  );
-}
-
-//TASK6
-let key = prompt(
-  "Введіть будь яку клавішу із рядка клавіатури, що починається клавішею 1 та закінчуючи ="
-);
-switch (key) {
-  case "1":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо !`);
+//TASK 7
+for (let i = 0; i < Infinity; i++) {
+  let agree = confirm("Ви бажаєте скористуватися нашим кальтулятором?");
+  if (agree) {
+    let num1 = +prompt("Введіть 1шу цифру");
+    let num2 = +prompt("Введіть 2гу цифру");
+    let sign = prompt("Введіть знак математичної дії");
+    let result = 0;
+    switch (sign) {
+      case "+":
+        result = num1 + num2;
+        break;
+      case "-":
+        result = num1 - num2;
+        break;
+      case "*":
+        result = num1 * num2;
+        break;
+      case "/":
+        result = num1 / num2;
+        break;
+    }
+    alert(`Результат: ${result}  `);
+  } else {
     break;
-  case "2":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо @`);
-    break;
-  case "3":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо #`);
-    break;
-  case "4":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо $`);
-    break;
-  case "5":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо %`);
-    break;
-  case "6":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо ^`);
-    break;
-  case "7":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо &`);
-    break;
-  case "8":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо *`);
-    break;
-  case "9":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо (`);
-    break;
-  case "0":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо )`);
-    break;
-  case "-":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо _`);
-    break;
-  case "=":
-    console.log(`При нажиманні клавіші ${key} з шифтом отримаємо +`);
-    break;
-  default:
-    console.log(
-      "Введено некоректне значення. Введіть будь яку клавішу із рядка клавіатури, що починається клавішею 1 та закінчуючи ="
-    );
+  }
 }
