@@ -1,106 +1,81 @@
-// 1.  Знайдіть суму всіх цифр від 1 до 100.
+// 1. Напишіть функцію, що повертає куб числа.
 
-// 2.  Є масив [1, 2, 3, 4, 5]. З допомогою  цикла for вивести всі елементи на екран.
+// 2. Напишіть функцію, що додає перше число до другого і ділить результат на третє число.
 
-// 3. Є масив [-1, 22, 3, 44, 5]. Виведіть максимальне значення
+// 3. Напишіть функцію, що приймає число від 1 до 7 і повертає відповідну назву дня (українською).
 
-// 4. Попросити юзера ввести 8 чисел і скільки він ввів додатніх, відємних та нулів. Вивести статистику на екран. Також досмтатньо тільки 1 змінної для отримання даних від юзера.
+// 4. Реалізуйте функцію знаходження факторіала
 
-// 5. Надрукуйте табличку множення для числа  8 від 1 до 9. 8 х 1 = 8
+// 5.  Напишіть функцію яка отримує години хвилини та секунди і повертає це число в секундах.
 
-// 6. Є масив з елементами 2, 5, 9, 15, 0, 4. З допомогою цикла for і оператора if вивести на екран цифри, які більше 3-х, але менше 10.
+// 6.    Написати функцію , яка приймає секунди, і перетворює їх у години хвилини та секунди у форматі «гг:хх:сс».
+// якщо кількість годин більша за 23.59.59 - вивести повідомлення "Більше одного дня".
 
-// 7. Створити калькулятор який буде зациклений. Запитати у юзера 2 числа та знак , провести математичну операцію, далі вивести результат і спитатись чи хоче юзер повторити?
+// 7. 4 відмінності ерров фанкшина від звичайної функції.
 
 //TASK 1
-let sum = 0;
-let i = 0;
-while (i <= 100) {
-  sum += i;
-  i++;
-}
-console.log(sum);
+let cube = (num) => num * num * num;
+console.log(cube(5));
 
 //TASK 2
-let arr = [1, 2, 3, 4, 5];
-for (let i = 0; i < arr.length; i++) {
-  console.log(arr[i]);
-}
+let calculation2 = (num1, num2, num3) => (num1 + num2) / num3;
+console.log(calculation2(10, 5, 2));
 
 //TASK 3
-let arr1 = [-1, 22, 3, 44, 5];
-console.log(Math.max(...arr1));
-let arr2 = [-1, 22, 3, 44, 5];
-let max = 0;
-for (let i = 0; i < arr2.length; i++) {
-  if (arr2[i] > max) {
-    max = arr2[i];
+let weekDay = (dayNum) => {
+  switch (dayNum) {
+    case 1:
+      return "Понеділок";
+      break;
+    case 2:
+      return "Вівторок";
+      break;
+    case 3:
+      return "Середа";
+      break;
+    case 4:
+      return "Четвер";
+      break;
+    case 5:
+      return "П'ятниця";
+      break;
+    case 6:
+      return "Субота";
+      break;
+    case 7:
+      return "Неділя";
+      break;
+    default:
+      console.log("Введіть число від 1 до 7");
   }
-}
-console.log(max);
+};
+console.log(weekDay(1));
 
 //TASK 4
-let arrNum = [],
-  arrPlusNum = [],
-  arrMinusNum = [],
-  arrZeros = [];
-let agree = confirm(
-  "Ви бажаєте скористуватися нашим сервісом? Вам потрібно буде ввести 8 чисел."
-);
-for (let i = 0; i < 8; i++) {
-  if (agree) {
-    let addNumber = +prompt(`Введіть будь яке число. ${i + 1} спроба`);
-    arrNum.push(addNumber);
-    if (addNumber === 0) {
-      arrZeros.push(addNumber);
-    } else if (addNumber > 0) {
-      arrPlusNum.push(addNumber);
-    } else if (addNumber < 0) {
-      arrMinusNum.push(addNumber);
-    }
-  } else break;
-}
-console.log(
-  `Ви ввели такі числа ${arrNum}. Ви ввели ${arrZeros.length} нулів, ${arrPlusNum.length} додатніх та ${arrMinusNum.length} від'ємних значень`
-);
+let factorial = (num) => {
+  let factor = 1;
+  for (let i = 1; i <= num; i++) {
+    factor = factor * i;
+  }
+  return factor;
+};
+console.log(factorial(5));
 
 //TASK 5
-for (let i = 1; i <= 9; i++) {
-  console.log(`8 x ${i} = ${8 * i}`);
-}
+let timeInSeconds = (hours, minutes, seconds) => {
+  return (sum = hours * 60 * 60 + minutes * 60 + seconds);
+};
+console.log(timeInSeconds(1, 15, 25));
 
 //TASK 6
-let arr6 = [2, 5, 9, 15, 0, 4];
-for (let i = 0; i < arr6.length; i++) {
-  if (arr6[i] > 3 && arr6[i] < 10) {
-    console.log(arr6[i]);
-  }
-}
-
-//TASK 7
-for (let i = 0; i < Infinity; i++) {
-  let agree = confirm("Ви бажаєте скористуватися нашим кальтулятором?");
-  if (agree) {
-    let num1 = +prompt("Введіть 1шу цифру");
-    let num2 = +prompt("Введіть 2гу цифру");
-    let sign = prompt("Введіть знак математичної дії");
-    let result = 0;
-    switch (sign) {
-      case "+":
-        result = num1 + num2;
-        break;
-      case "-":
-        result = num1 - num2;
-        break;
-      case "*":
-        result = num1 * num2;
-        break;
-      case "/":
-        result = num1 / num2;
-        break;
-    }
-    alert(`Результат: ${result}  `);
+let time = (seconds) => {
+  if (seconds / (60 * 60) >= 24) {
+    console.log("Більше одного дня.");
   } else {
-    break;
+    let hours = Math.floor(seconds / (60 * 60));
+    let minutes = Math.floor((seconds % (60 * 60)) / 60);
+    let sec = seconds % 60;
+    return `«${hours}:${minutes}:${sec}»`;
   }
-}
+};
+console.log(time(86350));
