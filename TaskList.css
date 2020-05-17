@@ -1,0 +1,19 @@
+.collection-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.done-button {
+  background-color: rgb(45, 153, 77);
+  margin-left: 5px;
+}
+
+.delete-button {
+  background-color: red;
+  margin-left: 5px;
+}
+
+.done-task {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
