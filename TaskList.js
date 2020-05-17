@@ -4,10 +4,6 @@ import { Button } from "react-materialize";
 
 function taskList(props) {
   let className = (props.isDone === true) ? "done-task" : "";
-  // let taskDone = "";
-  // if (props.isDone === true) {
-  //   taskDone = "done-task";
-  // }
 
   return (
     <li className="collection-item">
